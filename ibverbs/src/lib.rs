@@ -1285,7 +1285,7 @@ impl<'res> PreparedQueuePair<'res> {
 
 /// A memory region that has been registered for use with RDMA.
 pub struct MemoryRegion<T> {
-    mr: *mut ffi::ibv_mr,
+    pub mr: *mut ffi::ibv_mr,
     data: Vec<T>,
 }
 
@@ -1462,7 +1462,7 @@ impl<'a> Drop for ProtectionDomain<'a> {
 /// (similar to a socket that is associated with a specific TCP or UDP port number)
 pub struct QueuePair<'res> {
     _phantom: PhantomData<&'res ()>,
-    qp: *mut ffi::ibv_qp,
+    pub qp: *mut ffi::ibv_qp,
 }
 
 unsafe impl<'a> Send for QueuePair<'a> {}
